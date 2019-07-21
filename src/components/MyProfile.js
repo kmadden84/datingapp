@@ -34,7 +34,7 @@ class MyProfile extends Component {
       var user = this.props.user;
       var pass = this.props.password;
 
-      fetch('http://localhost:5000/api/users/', {
+      fetch('https://datingapi.herokuapp.com/api/users/', {
         method: "GET",
         mode: "cors",
         headers: {
@@ -67,7 +67,7 @@ class MyProfile extends Component {
             //setting states to manage course fields
             Object.entries(this.state.courseContent).map(([key, value], i) => {
               this.setState({
-                prof_img: 'http://localhost:5000/' + value.Image.imageData,
+                prof_img: 'https://datingapi.herokuapp.com/' + value.Image.imageData,
                 fav_movie: value.fav_movie,
                 fav_band: value.fav_band,
                 fav_song: value.fav_song,

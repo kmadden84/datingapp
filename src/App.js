@@ -50,7 +50,7 @@ class App extends Component {
       loader: true,
     });
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/creds", {
+      fetch("https://datingapi.herokuapp.com/api/creds", {
         method: "GET",
         mode: 'cors',
         headers: new Headers({

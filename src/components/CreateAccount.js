@@ -64,7 +64,7 @@ postImage = () => {
   var user = this.props.user;
   var pass = this.props.password;
 
-  fetch("http://localhost:5000/api/users/image", {
+  fetch("https://datingapi.herokuapp.com/api/users/image", {
   method: "POST",
   headers: {
    'Authorization': 'Basic ' + btoa(user + ':' + pass),
@@ -85,7 +85,7 @@ postImage = () => {
 console.log(user)
 
 
-      fetch("http://localhost:5000/api/users", {
+      fetch("https://datingapi.herokuapp.com/api/users", {
         method: "POST",
         headers: {
          'Authorization': 'Basic ' + btoa(user + ':' + pass),
@@ -326,7 +326,7 @@ console.log(user)
                   <option value="" selected disabled hidden>Favorite Weather</option>
                   <option value="Stormy">Stormy</option>
                   <option value="Sunny & Hot">Sunny & Hot</option>
-                  <option value="Sunny & Cold">Sunny & Cold</option>
+                  <option value="Sunny & Cold">Sunny & Cold</option>s
                   <option value="Snowing">Snowing</option>
                   <option value="Apocalyptic">Apocalyptic</option>
                 </select>

@@ -41,7 +41,7 @@ class UpdateProfile extends Component {
     var user = this.props.user;
     var pass = this.props.password;
 
-    fetch('http://localhost:5000/api/users/image', {
+    fetch('https://datingapi.herokuapp.com/api/users/image', {
       method: "GET",
       mode: "cors",
       headers: {
@@ -59,7 +59,7 @@ class UpdateProfile extends Component {
           //  resolve(responseJson)
           if (responseJson.results != null) {
             this.setState({
-              multerImage: 'http://localhost:5000/' + responseJson.results.imageData
+              multerImage: 'https://datingapi.herokuapp.com/' + responseJson.results.imageData
             })
           }
         })
@@ -68,7 +68,7 @@ class UpdateProfile extends Component {
         this.props.history.push("/error")
       })
 
-    fetch('http://localhost:5000/api/users/', {
+    fetch('https://datingapi.herokuapp.com/api/users/', {
       method: "GET",
       mode: "cors",
       headers: {
@@ -135,7 +135,7 @@ class UpdateProfile extends Component {
   postImage = () => {
     var user = this.props.user;
     var pass = this.props.password;
-    fetch("http://localhost:5000/api/users/image", {
+    fetch("https://datingapi.herokuapp.com/api/users/image", {
       method: "PUT",
       headers: {
         'Authorization': 'Basic ' + btoa(user + ':' + pass),
@@ -151,7 +151,7 @@ class UpdateProfile extends Component {
     var pass = this.props.password;
 
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:5000/api/users', {
+      fetch('https://datingapi.herokuapp.com/api/users', {
         method: "PUT",
         headers: {
           'Authorization': 'Basic ' + btoa(user + ':' + pass),

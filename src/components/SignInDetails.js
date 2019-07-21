@@ -59,7 +59,7 @@ class UserSignUp extends Component {
     }
     else {
       return new Promise((resolve, reject) =>
-        fetch('http://localhost:5000/api/user', {
+        fetch('https://datingapi.herokuapp.com/api/user', {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'

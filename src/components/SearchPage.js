@@ -59,7 +59,7 @@ export default class SearchPage extends Component {
     var user = this.props.currentState.username;
     var pass = this.props.currentState.password;
 
-    fetch('http://localhost:5000/api/users/', {
+    fetch('https://datingapi.herokuapp.com/api/users/', {
       method: "GET",
       mode: "cors",
       headers: {
@@ -151,7 +151,7 @@ searchPeople(state) {
   var gender= state[0].gender;
   var id = this.props.currentState.id;
 console.log(id)
-  var url = "http://localhost:5000/api/users/search?movie="+ movie +
+  var url = "https://datingapi.herokuapp.com/api/users/search?movie="+ movie +
     '&band=' + band +
     '&song=' + song +
     '&vaca=' + vaca +
