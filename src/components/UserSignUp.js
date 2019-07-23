@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 //import axios from 'axios';
 
-//import {Ball} from './UserSignIn';
+import {Ball} from './UserSignIn';
 const DefaultImg = process.env.PUBLIC_URL + "/images/default-image.jpg"
 
 class UserSignUp extends Component {

@@ -8,6 +8,9 @@ import UpdateProfile from './components/UpdateProfile';
 import CreateAccount from './components/CreateAccount';
 import MyProfile from './components/MyProfile';
 import UserSignOut from './components/UserSignOut';
+import UserDetails from './components/UserDetails';
+
+
 // import NoResults from './components/NoResults';
 // import Forbidden from './components/Forbidden';
 
@@ -135,8 +138,8 @@ class App extends Component {
           <PrivateRoute path={`${this.props.match.path}create-account`} component={CreateAccount} />
           <PrivateRoute exact path={`${this.props.match.path}my-profile`} component={MyProfile} />
           <PrivateRoute exact path={`${this.props.match.path}update-profile`} component={UpdateProfile} />
-
           <Route path={`${this.props.match.path}signout`} exact={true} render={(props) => <UserSignOut signout={this.clearState} {...props} />} />
+          <Route exact path={`${this.props.match.path}users/:id`} render={(props) => <UserDetails password={this.state.password} user={this.state.username} {...props} />} />
 
           {/* 
           <Route exact path={`${this.props.match.path}search`} render={(props) => <Search submit={this.handleStateChange} currentState={this.state} userdata={this.signIn} {...props} />} />

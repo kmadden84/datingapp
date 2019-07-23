@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import '../index.css';
+import { NavLink } from 'react-router-dom';
 
 // import { keyframes } from 'styled-components';
 // import styled from 'styled-components';
@@ -218,25 +219,27 @@ render(props) {
     var movie = this.state.results_content[i].fav_movie;
     var song = this.state.results_content[i].fav_song;
     var age = this.state.results_content[i].age;
+    var id = this.state.results_content[i].id;
     var imgUrl = this.state.results_content[i].Image.imageData;
         imgUrl = imgUrl.replace('\\', '/');
 
-    var prof_img = 'http://localhost:5000/' + imgUrl;
+    var prof_img = 'https://datingapi.herokuapp.com/' + imgUrl;
 
     const divStyle = {
       backgroundImage: 'url(' + prof_img + ')',
     };
     dealTile.push(
+      <NavLink className="course--module course--link" to={`/users/${id}/`}>
       <div className="personTitle" key={i}>
         <div className="personTile_persimImg" style={divStyle}></div>
         <div className="bioInfo">
-          <div className="perstonTile_name">{name}</div>
-          <div className="perstonTile_age">32</div>
-          <div className="perstonTile_movie">{movie}</div>
-          <div className="perstonTile_song">{song}</div>
+          <div className="perstonTile_name">Name: {name}</div>
+          <div className="perstonTile_age">Age: 32</div>
+          <div className="perstonTile_movie">Movie: {movie}</div>
+          <div className="perstonTile_song">Song: {song}</div>
         </div>
-
       </div>
+      </NavLink>
     )
   }
 
@@ -306,10 +309,7 @@ render(props) {
 
   return (
     <div className="results">
-
       {dealTile}
-
-
 
     </div>
 

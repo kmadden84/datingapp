@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-//import {keyframes} from 'styled-components';
-//import styled from 'styled-components';
+import {keyframes} from 'styled-components';
+import styled from 'styled-components';
 
 //Exporting Loading Animation
 
 
-// export const spin = keyframes`
-//   0% { transform: rotate(0deg); }
-//   100% { transform: rotate(360deg); }
-// `;
+export const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
 
-// //Exporting Loading Animation
+//Exporting Loading Animation
 
-// export const Ball = styled.div`
-//   border: 16px solid #f3f3f3;
-//   border-radius: 50%;
-//   border-top: 16px solid blue;
-//   border-right: 16px solid green;
-//   border-bottom: 16px solid red;
-//   width: 30px;
-//   height: 30px;
-//   -webkit-animation: spin 2s linear infinite;
-//   animation: ${spin} 2s linear infinite;
-//   position: relative;
-//   left: 47%;
-//   top: 200px;
-// `;
+export const Ball = styled.div`
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: ${spin} 2s linear infinite;
+  position: relative;
+  left: 47%;
+  top: 200px;
+`;
 
 class UserSignIn extends Component {
 
@@ -37,11 +37,11 @@ class UserSignIn extends Component {
   render(props) {
     return (
       <div className="bounds" >
-      {/* {
+       {
         (this.props.loader)
         ? <Ball /> //Loader
         : ""
-      } */}
+      } 
         <div className="grid-33 centered signin">
           <h1>Sign In</h1>
           <div>

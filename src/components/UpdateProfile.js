@@ -243,6 +243,8 @@ class UpdateProfile extends Component {
             <form>
               <div className="profileInfo">
                 <div className="row">
+
+                  <img src={this.state.multerImage} alt="upload-image" className="process__image" />
                   <input
                     type="file"
                     className="process_upload-btn"
@@ -250,7 +252,6 @@ class UpdateProfile extends Component {
                     name="age"
                     ref={(input) => this.img = input}
                   />
-                  <img src={this.state.multerImage} alt="upload-image" className="process__image" />
                 </div>
                 <div className="row">
                   <div>
@@ -370,6 +371,7 @@ class UpdateProfile extends Component {
                     <option value="Horror">Horror</option>
                   </select>
                 </div>
+                <div className="row">
 
                 <select name="weather" id="dropdown" className="weather" onChange={this.handleChange}>
                   <option value="" selected disabled hidden>Favorite Time of Day</option>
@@ -388,6 +390,7 @@ class UpdateProfile extends Component {
                   <option value="Mexican">Mexican</option>
                   <option value="American">American</option>
                 </select>
+                </div>
               </div>
               <div className="row">
                 <div>

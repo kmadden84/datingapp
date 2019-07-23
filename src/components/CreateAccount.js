@@ -186,6 +186,8 @@ console.log(user)
       
             <div className="profileInfo">
               <div className="row">
+
+                <img src={this.state.multerImage} alt="upload-image" className="process__image" />
                 <input
                   type="file"
                   className="process_upload-btn"
@@ -193,8 +195,6 @@ console.log(user)
                   name="age"
                   ref={(input) => this.img = input}
                 />
-                <img src={this.state.multerImage} alt="upload-image" className="process__image" />
-
               </div>
 
               <div className="row">

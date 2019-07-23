@@ -253,7 +253,8 @@ img {
 .persons {
   max-width: 1280px;
   margin: 0px auto;
-  height: 92vh;
+  min-height: 900px;
+  overflow: visible;
   align-items: center;
   flex-direction: row;
   display: flex;
