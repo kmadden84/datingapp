@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import {Ball} from './UserSignIn';
 
 class MyProfile extends Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class MyProfile extends Component {
       fav_drink: "",
       fav_cuisine: "",
       first_name: "",
-      last_name: ""
+      last_name: "",
+      loader: true
     }
   }
   componentDidMount(props) {
@@ -53,7 +55,8 @@ class MyProfile extends Component {
             if (responseJson.user[0] != null) {
               this.setState({
                 courseContent: responseJson.user,
-                creator: responseJson.user[0].Credential.username
+                creator: responseJson.user[0].Credential.username,
+                loader: false
               });
             } else {
               this.props.history.push("/create-account")
@@ -97,6 +100,12 @@ class MyProfile extends Component {
   render(props) {
     return (
      <div className="profileBlock">
+                {
+        (this.state.loader)
+        ? <Ball /> //Loader
+        : ""
+      } 
+
     <h1>Your Current Profile</h1>
     <img src={this.state.prof_img} alt="profile-image" />
     <p>First Name {this.state.first_name}</p>

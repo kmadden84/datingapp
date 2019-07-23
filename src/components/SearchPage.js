@@ -2,33 +2,13 @@ import React, { Component } from 'react';
 import Search from './Search';
 import '../index.css';
 import { NavLink } from 'react-router-dom';
-
-// import { keyframes } from 'styled-components';
-// import styled from 'styled-components';
-
-// export const spin = keyframes`
-//   0% { transform: rotate(0deg); }
-//   100% { transform: rotate(360deg); }
-// `;
-// export const Ball = styled.div`
-//   border: 16px solid #f3f3f3;
-//   border-radius: 50%;
-//   border-top: 16px solid blue;
-//   border-right: 16px solid green;
-//   border-bottom: 16px solid red;
-//   width: 30px;
-//   height: 30px;
-//   -webkit-animation: spin 2s linear infinite;
-//   animation: ${spin} 2s linear infinite;
-//   position: relative;
-//   left: 47%;
-//   top: 200px;
-// `;
+import {Ball} from './UserSignIn';
 
 export default class SearchPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loader: true,
       user_content: "",
       results_content: "",
       fav_movie: "",
@@ -76,8 +56,10 @@ export default class SearchPage extends Component {
         }
         response.json().then((responseJson) => {
           if (responseJson.user.length !== 0) {
+            
             const _this = this;
             _this.setState({
+              loader: false,
               user_content: responseJson.user,
               creator: responseJson.user[0].Credential.username
             }, () => {
@@ -203,72 +185,14 @@ render(props) {
     )
   }
 
-
-
-  //   if (this.state.content[i].snapshots && this.state.content[i].snapshots.product_price < this.state.content[i].product_price) {
-  //     topDeals.push(
-  //       <div className="grid-33" key={i}>
-  //         <a className="course--module course--link" target="_blank" href={fullLink}>
-  //           <h3 className="content--title">{title}</h3>
-  //           <h3 className="content--price">{price} <span className="newPrice">{this.state.content[i].snapshots.price}</span></h3>
-  //         </a>
-  //       </div>
-  //     )
-  //   }
-  //   let childArray = this.state.content[i];
-  //   for (let j = 0; j < childArray.length; j++) {
-  //     var price = childArray[j].product_price;
-  //     var title = childArray[j].product_title;
-  //     var link = childArray[j].product_urlCode;
-  //     switch (childArray[j].merchant_id) {
-  //       case 1:
-  //         merchant = "Amazon.ca"
-  //         break;
-  //       case 2:
-  //         merchant = "Best Buy"
-  //         break;
-  //       case 3:
-  //         merchant = "Walmart"
-  //         break;
-  //       case 4:
-  //         merchant = "Toys R Us"
-  //         break;
-  //       case 5:
-  //         merchant = "EB Games"
-  //         break;
-  //       case 6:
-  //         merchant = "Think Geek"
-  //         break;
-  //       case 7:
-  //         merchant = "One Plus"
-  //         break;
-  //       case 8:
-  //         merchant = "Amazon Japan"
-  //         break;
-  //       case 9:
-  //         merchant = "Amazon Us"
-  //         break;
-  //       default:
-  //     }
-  //     if (link != undefined) {
-  //       var fullLink = "//bit.ly/" + link;
-  //     }
-  //     if (price > 0) {
-  //       dealTile.push(
-  //         <div className="grid-33" key={j}>
-  //           <a className="course--module course--link" target="_blank" href={fullLink}>
-  //             <h3 className="content--price">{merchant}</h3>
-  //             <h3 className="content--title">{title}</h3>
-  //             <h3 className="content--price">{price}</h3>
-  //           </a>
-  //         </div>
-  //       )
-  //     }
-  //   }
-
-
   return (
+    
     <div className="results">
+           {
+        (this.state.loader)
+        ? <Ball /> //Loader
+        : ""
+      } 
       {dealTile}
 
     </div>
