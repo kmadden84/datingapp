@@ -41,33 +41,6 @@ class UpdateProfile extends Component {
     var user = this.props.user;
     var pass = this.props.password;
 
-    fetch('https://datingapi.herokuapp.com/api/users/image', {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        'Authorization': 'Basic ' + btoa(user + ':' + pass),
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          this.setState({
-            successful: true
-          });
-        }
-        response.json().then((responseJson) => {
-          //  resolve(responseJson)
-          if (responseJson.results != null) {
-            this.setState({
-              multerImage: 'https://datingapi.herokuapp.com/' + responseJson.results.imageData
-            })
-          }
-        })
-      }).catch((error) => {
-        // reject(error);
-        this.props.history.push("/error")
-      })
-
     fetch('https://datingapi.herokuapp.com/api/users/', {
       method: "GET",
       mode: "cors",
@@ -92,7 +65,8 @@ class UpdateProfile extends Component {
               currentSong: responseJson.user[0].fav_song,
               currentDrink: responseJson.user[0].fav_drink,
               currentBand: responseJson.user[0].fav_band,
-              currentMovie: responseJson.user[0].fav_movie
+              currentMovie: responseJson.user[0].fav_movie,
+              multerImage: 'https://datingapi.herokuapp.com/' + responseJson.user["0"].Image.imageData
             })
           }
         })
