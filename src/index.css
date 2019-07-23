@@ -214,6 +214,7 @@ form.search-form button#submit:hover {
   margin: 0px auto;
   -ms-flex-line-pack: center;
       align-content: center;
+  margin-top: 25px;
 }
 
 .results .personTitle {
@@ -228,6 +229,8 @@ form.search-form button#submit:hover {
   margin-left: 5px;
   width: 32%;
   position: relative;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 @media (max-width: 1170px) {
@@ -241,6 +244,17 @@ form.search-form button#submit:hover {
   .results .personTitle {
     width: 100%;
   }
+}
+
+.results .personTitle:hover {
+  background: #059;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.results .personTitle:hover .bioInfo {
+  color: #fff;
+  margin-left: 10px;
 }
 
 .results .personTile_persimImg {
@@ -259,6 +273,7 @@ form.search-form button#submit:hover {
   position: absolute;
   left: 50%;
   top: 32%;
+  margin-left: 10px;
 }
 
 .profileBlock {
