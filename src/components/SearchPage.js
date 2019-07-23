@@ -75,8 +75,6 @@ export default class SearchPage extends Component {
           });
         }
         response.json().then((responseJson) => {
-          console.log(responseJson)
-          //  resolve(responseJson)
           if (responseJson.user.length !== 0) {
             const _this = this;
             _this.setState({
@@ -85,14 +83,7 @@ export default class SearchPage extends Component {
             }, () => {
               this.searchPeople(this.state.user_content)
             });
-            console.log(this.state.user_content)
 
-            //console.log(responseJson.user[0].first_name)
-            // if (this.props.user !== this.state.creator) {
-            //   // alert('Only the content creator may update this course')
-            //   this.props.history.push("/forbidden");
-            //  }
-            //setting states to manage course fields
           } else {
             alert('You need to create your profile to see your matches')
             this.props.history.push("/create-account")
@@ -106,33 +97,6 @@ export default class SearchPage extends Component {
   }
 
 searchPeople(state) {
-
-  console.log(state[0].age)
-  // Object.entries(state).map(([key, value], i) => {
-  //   this.setState({
-  //     fav_movie: value.fav_movie,
-  //     fav_band: value.fav_band,
-  //     fav_song: value.fav_song,
-  //     looking_for: value.looking_for,
-  //     drinking: value.drinking,
-  //     education: value.education,
-  //     build: value.build,
-  //     living_status: value.living_status,
-  //     age: value.age,
-  //     ideal_vaca: value.ideal_vaca,
-  //     fav_cheese: value.fav_cheese,
-  //     fav_timeofday: value.fav_timeofday,
-  //     fav_mov_genre: value.fav_mov_genre,
-  //     fav_weather: value.fav_weather,
-  //     fav_drink: value.fav_drink,
-  //     fav_cuisine: value.fav_cuisine,
-  //     first_name: value.Credential.first_name,
-  //     last_name: value.Credential.last_name
-  //   })
- // })
-
-  //console.log(this.state.fav_movie)
-
   var movie = state[0].fav_movie;
   var band = state[0].fav_band;
   var song = state[0].fav_song;
@@ -151,7 +115,7 @@ searchPeople(state) {
   var cuisine = state[0].fav_cuisine;
   var gender= state[0].gender;
   var id = this.props.currentState.id;
-console.log(id)
+
   var url = "https://datingapi.herokuapp.com/api/users/search?movie="+ movie +
     '&band=' + band +
     '&song=' + song +
@@ -172,9 +136,6 @@ console.log(id)
     '&gender=' + gender;
 
 url = url.replace(/ /g,"%20");
-console.log(url)
-//sParameter = encodeURIComponent(sParameter.trim()) //"Test%20-%20Text"
-
 
   console.log(url)
 
@@ -184,7 +145,6 @@ console.log(url)
   })
     .then((response) => {
       response.json().then((responseJson) => {
-        console.log(responseJson)
         if (responseJson.results.rows !== 'undefined') {
           this.setState({
             results_content: responseJson.results.rows,

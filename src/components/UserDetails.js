@@ -27,7 +27,6 @@ class UserDetails extends Component {
         mode: "cors",
       })
         .then((response) => {
-          console.log(response)
           this.setState({
             loader: false
           });
@@ -38,7 +37,6 @@ class UserDetails extends Component {
           }
           else if (response.status === 200) {
             response.json().then((responseJson) => {
-              console.log(responseJson)
               resolve(responseJson)
               if (responseJson) { //IF there's a user, set course content and creator
                 this.setState({

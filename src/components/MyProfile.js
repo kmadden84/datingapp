@@ -49,7 +49,6 @@ class MyProfile extends Component {
             });
           }
           response.json().then((responseJson) => {
-            console.log(responseJson)
             resolve(responseJson)
             if (responseJson.user[0] != null) {
               this.setState({

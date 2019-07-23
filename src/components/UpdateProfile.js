@@ -57,7 +57,6 @@ class UpdateProfile extends Component {
         }
         response.json().then((responseJson) => {
           //  resolve(responseJson)
-          console.log(responseJson)
           if (responseJson != null) {
             this.setState({
               currentUserData: responseJson.user[0],

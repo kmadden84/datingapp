@@ -48,7 +48,6 @@ class UserSignUp extends Component {
             this.setState({
               loader: false
             });
-            console.log(response)
             if (response.status === 200) {
               this.props.userdata(this.username.value, this.pass.value);
               this.props.history.push("/create-account");
