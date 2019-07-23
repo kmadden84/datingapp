@@ -9,6 +9,7 @@ import CreateAccount from './components/CreateAccount';
 import MyProfile from './components/MyProfile';
 import UserSignOut from './components/UserSignOut';
 import UserDetails from './components/UserDetails';
+import NoResults from './components/NoResults';
 
 
 // import NoResults from './components/NoResults';
@@ -140,15 +141,14 @@ class App extends Component {
           <PrivateRoute exact path={`${this.props.match.path}update-profile`} component={UpdateProfile} />
           <Route path={`${this.props.match.path}signout`} exact={true} render={(props) => <UserSignOut signout={this.clearState} {...props} />} />
           <Route exact path={`${this.props.match.path}users/:id`} render={(props) => <UserDetails password={this.state.password} user={this.state.username} {...props} />} />
+          <Route path='*' exact={true} component={NoResults} />
 
           {/* 
           <Route exact path={`${this.props.match.path}search`} render={(props) => <Search submit={this.handleStateChange} currentState={this.state} userdata={this.signIn} {...props} />} />
           <Route exact path="/" render={(props) => <Home {...props} />} />
-          <Route path={`${this.props.match.path}signout`} exact={true} render={(props) => <UserSignOut signout={this.clearState} {...props} />} />
-          <Route exact path={`${this.props.match.path}courses/:id`} render={(props) => <CourseDetails password={this.state.password} user={this.state.emailAddress} {...props} />} />
           <Route exact path='/forbidden' exact={true} component={Forbidden} />
           <Route path='/error' exact={true} component={Error} />
-          <Route path='*' exact={true} component={NoResults} />  */}
+            */}
         </Switch>
       </div>
     );

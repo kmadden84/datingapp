@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
- "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
- sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,8 +13,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
- monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 @font-face {
@@ -153,9 +150,13 @@ form.search-form button#submit:hover {
   font-size: 16px;
   width: 25%;
 }
-.row select:nth-child(2), .row div:nth-child(2) {
-  margin-left: 12px;
+
+@media (max-width: 807px) {
+  .grid-33.centered.signin input, .grid-33.centered.signin select {
+    width: 50%;
+  }
 }
+
 .header {
   background: #038;
 }
@@ -174,6 +175,14 @@ form.search-form button#submit:hover {
   display: inline-block;
 }
 
+@media (max-width: 600px) {
+  .header .header--logo {
+    display: block;
+    text-align: center;
+    float: none;
+  }
+}
+
 .header .bounds {
   padding: 10px 30px;
 }
@@ -184,14 +193,25 @@ form.search-form button#submit:hover {
   margin-top: 10px;
 }
 
+@media (max-width: 600px) {
+  .header nav {
+    display: block;
+    text-align: center;
+    float: none;
+  }
+}
+
 .header nav a {
   color: #fff;
+}
+
+.row select:nth-child(2), .row div:nth-child(2) {
+  margin-left: 10px;
 }
 
 .results {
   max-width: 1280px;
   margin: 0px auto;
-  margin-top: 25px;
   -ms-flex-line-pack: center;
       align-content: center;
 }
@@ -208,30 +228,28 @@ form.search-form button#submit:hover {
   margin-left: 5px;
   width: 32%;
   position: relative;
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 10px;
 }
-.results .personTitle:hover {
-  background: #05F;
-  color: #fff;
-  transition: 0.5s;
+
+@media (max-width: 1170px) {
+  .results .personTitle {
+    width: 49.5%;
+    margin-left: 0;
+  }
 }
-.results .personTitle:hover .bioInfo {
-  color: #fff;
-  transition: 0.5s;
+
+@media (max-width: 807px) {
+  .results .personTitle {
+    width: 100%;
+  }
 }
+
 .results .personTile_persimImg {
   width: 200px;
   height: 200px;
   background-size: cover;
   border-radius: 50%;
 }
-img.process__image {
-  display: block;
-  clear: both;
-  margin: 0 auto;
-}
+
 .results .bioInfo {
   color: #038;
   font-weight: bold;
@@ -239,7 +257,7 @@ img.process__image {
   z-index: 99999999999;
   display: block;
   position: absolute;
-  left: 53%;
+  left: 50%;
   top: 32%;
 }
 
@@ -248,12 +266,33 @@ img.process__image {
   margin: 0 auto;
   text-align: center;
   width: 60%;
+  margin-top: 25px;
+}
+
+.profileBlock img {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 90%;
 }
 
 .profileBlock p {
   display: inline-block;
   width: 24%;
   text-align: left;
+  vertical-align: top;
+}
+
+@media (max-width: 1170px) {
+  .profileBlock p {
+    width: 50%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .profileBlock p {
+    width: 100%;
+  }
 }
 
 .profileBlock img {
@@ -269,10 +308,23 @@ img.process__image {
   margin-top: 20px;
 }
 
+.noResults, .center {
+  text-align: center;
+  display: block;
+}
+
+img.process__image {
+  display: block;
+  clear: both;
+  margin: 0 auto;
+  max-width: 25%;
+}
+
 .persons {
   max-width: 1280px;
   margin: 0px auto;
-  height: 92vh;
+  min-height: 900px;
+  overflow: visible;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

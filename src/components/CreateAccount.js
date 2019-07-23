@@ -77,13 +77,12 @@ postImage = () => {
 }
 
   createUser = (e) => {
-    console.log(this.state.cuisine)
     e.preventDefault();
     return new Promise((resolve, reject) => {
       var user = this.props.user;
       var pass = this.props.password;
-console.log(user)
 
+    
 
       fetch("https://datingapi.herokuapp.com/api/users", {
         method: "POST",
@@ -115,7 +114,6 @@ console.log(user)
         })
       })
         .then((response) => {
-          console.log(response)
           if (response.status === 200) {
             this.setState({
               successful: true
@@ -148,7 +146,6 @@ console.log(user)
             //this.props.history.push("/");
           } else {
           response.json().then((responseJson) => {
-            console.log(responseJson)
             resolve(responseJson)
             if (responseJson) {
               alert(responseJson["Error"])

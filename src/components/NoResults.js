@@ -6,7 +6,7 @@ const NoResults = () => (
     <div className="grid-100">
       <h1 className="noResults">No Results Found</h1>
       <h2 align="center">This is not the route you are looking for.</h2>
-      <NavLink to="/" className="button center">Course List</NavLink>
+      <NavLink to="/" className="button center">Home Page</NavLink>
     </div>
   </div>
 );

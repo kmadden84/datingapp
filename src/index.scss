@@ -26,7 +26,7 @@ code {
 
 $desktop: 1170px;
 $mobile: 807px;
-
+$smallmobile: 600px;
 @mixin desktop {
   @media (max-width: $desktop) {
     @content;
@@ -37,7 +37,11 @@ $mobile: 807px;
     @content;
   }
 }
-
+@mixin smallmobile {
+  @media (max-width: $smallmobile) {
+    @content;
+  }
+}
 .grid-33.centered.signin {
 
 .row div {
@@ -45,7 +49,7 @@ $mobile: 807px;
   width: 25%;
 }
 .row div input {
-  width: 98% !important;
+  width: 100% !important;
 }
 }
 
@@ -152,7 +156,10 @@ margin-bottom: 15px;
 outline: none;
 box-sizing: border-box;
 font-size: 16px;
-width:20%;
+width:25%;
+@include mobile{
+  width: 50%;
+}
 }
 }
 
@@ -162,7 +169,7 @@ width:20%;
   background: #038;
 
 
- a:nth-child(2) {
+ a:nth-child(2), a:nth-child(3) {
     margin-left: 15PX;
  }
 
@@ -174,6 +181,11 @@ width:20%;
   font-family: 'milkshake';
   color: #fff;
   display:inline-block;
+  @include smallmobile{
+    display:block;
+    text-align: center;
+    float:none;
+  }
 }
 
 .bounds {
@@ -183,6 +195,11 @@ nav {
   color: #fff;
   float:right;
   margin-top: 10px;
+  @include smallmobile {
+    display:block;
+    text-align: center;
+    float:none;
+  }
 }
 nav a {
   color: #fff;
@@ -190,6 +207,9 @@ nav a {
 }
 
 
+.row select:nth-child(2), .row div:nth-child(2) {
+  margin-left: 10px;
+}
 
 .results {
   max-width: 1280px;
@@ -204,7 +224,15 @@ nav a {
   margin-left: 5px;
   width: 32%;
   position: relative;
+  @include desktop {
+    width: 49.5%;
+    margin-left: 0;
+  }
+  @include mobile {
+    width: 100%;
+  }
 }
+
 .personTile_persimImg {
   width: 200px;
   height: 200px;
@@ -229,11 +257,26 @@ nav a {
   margin: 0 auto;
   text-align: center;
   width: 60%;
+  margin-top: 25px;
+
+    img {
+      margin: 0 auto;
+      text-align:center;
+      max-width: 90%;
+    }
 
  p {
   display: inline-block;
   width: 24%;
   text-align: left;
+  vertical-align: top;
+  @include desktop {
+    width: 50%;
+    text-align: center;
+  }
+  @include smallmobile {
+    width: 100%;
+  }
 }
 
 img {
@@ -249,7 +292,16 @@ img {
   margin-top: 20px;
 }
 }
-
+.noResults, .center {
+  text-align: center;
+  display: block;
+}
+img.process__image {
+  display: block;
+  clear: both;
+  margin: 0 auto;
+  max-width: 25%;
+}
 .persons {
   max-width: 1280px;
   margin: 0px auto;
