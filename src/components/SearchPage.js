@@ -39,8 +39,9 @@ export default class SearchPage extends Component {
     new Promise((resolve, reject) => {
     var user = this.props.currentState.username;
     var pass = this.props.currentState.password;
+   // fetch('http://localhost:5000/api/users/', {
 
-    fetch('https://datingapi.herokuapp.com/api/users/', {
+   fetch('https://datingapi.herokuapp.com/api/users/', {
       method: "GET",
       mode: "cors",
       headers: {
@@ -55,6 +56,7 @@ export default class SearchPage extends Component {
           });
         }
         response.json().then((responseJson) => {
+          console.log(responseJson)
           if (responseJson.user.length !== 0) {
             
             const _this = this;
@@ -97,7 +99,8 @@ searchPeople(state) {
   var cuisine = state[0].fav_cuisine;
   var gender= state[0].gender;
   var id = this.props.currentState.id;
-
+console.log(movie)
+ // var url = "http://localhost:5000/api/users/search?movie="+ movie +
   var url = "https://datingapi.herokuapp.com/api/users/search?movie="+ movie +
     '&band=' + band +
     '&song=' + song +
@@ -127,7 +130,9 @@ url = url.replace(/ /g,"%20");
   })
     .then((response) => {
       response.json().then((responseJson) => {
+        console.log(responseJson)
         if (responseJson.results.rows !== 'undefined') {
+         
           this.setState({
             results_content: responseJson.results.rows,
             pages: responseJson.pages
@@ -135,7 +140,7 @@ url = url.replace(/ /g,"%20");
         }
         // resolve(responseJson)
         if (responseJson) {
-          console.log(this.state.content)
+          console.log(this.state.results_content)
         }
       })
     })
@@ -166,7 +171,7 @@ render(props) {
         imgUrl = imgUrl.replace('\\', '/');
 
     var prof_img = 'https://datingapi.herokuapp.com/' + imgUrl;
-
+    //var prof_img = 'http://localhost:5000/' + imgUrl;
     const divStyle = {
       backgroundImage: 'url(' + prof_img + ')',
     };

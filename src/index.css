@@ -21,6 +21,53 @@ code {
   src: url("../src/fonts/Milkshake.ttf") format("truetype"), url("../src/fonts/Milkshake.otf") format("opentype");
 }
 
+.styles_modal__gNwvD {
+  max-width: 800px;
+  position: relative;
+  padding: 2.2rem;
+  background: #ffffff;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+  width: 500px;
+  height: 267px;
+}
+
+.styles_modal__gNwvD button.button {
+  background: #038;
+  padding: 10px;
+  border: 0;
+  color: #fff;
+}
+
+.styles_modal__gNwvD input, .styles_modal__gNwvD textarea {
+  width: 100%;
+  margin: 0;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+
+.styles_modal__gNwvD .row select:nth-child(2), .styles_modal__gNwvD .row div:nth-child(2) {
+  margin-left: 0;
+}
+
+.styles_modal__gNwvD textarea {
+  height: 150px;
+}
+
+.styles_modal__gNwvD div {
+  margin: 0;
+  padding: 0;
+  margin-left: 0;
+}
+
+.styles_modal__gNwvD form {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
 .grid-33.centered.signin .row div {
   display: inline-block;
   width: 25%;
@@ -30,9 +77,58 @@ code {
   width: 100% !important;
 }
 
+.msgBlock {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.msgBlock p {
+  margin-bottom: 7px;
+}
+
+h4.msg--label {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid;
+  border-collapse: collapse;
+  margin-bottom: 5px;
+}
+
 .formSearch h1 {
   text-align: center;
   font-family: 'milkshake';
+}
+
+i.fas.fa-envelope {
+  font-size: 25px;
+  position: relative;
+  /* right: 20px; */
+  top: 5px;
+}
+
+sup.msgNumber {
+  padding: 0;
+  border-radius: 50%;
+  background: red;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  position: relative;
+  left: -2px;
+}
+
+sup.msgNumber span {
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  font-size: 11px;
+}
+
+a.msgCount {
+  text-decoration: none;
 }
 
 form.search-form {
@@ -161,7 +257,7 @@ form.search-form button#submit:hover {
   background: #038;
 }
 
-.header a:nth-child(2), .header a:nth-child(3) {
+.header a:nth-child(2), .header a:nth-child(3), .header a:nth-child(4) {
   margin-left: 15PX;
 }
 
@@ -203,6 +299,24 @@ form.search-form button#submit:hover {
 
 .header nav a {
   color: #fff;
+}
+
+button.msgButton {
+  display: block;
+  clear: both;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px;
+  background: #038;
+  color: #fff;
+  border: 0;
+  font-family: 'milkshake';
+  font-size: 30px;
+}
+
+button.msgButton:hover {
+  cursor: pointer;
 }
 
 .row select:nth-child(2), .row div:nth-child(2) {

@@ -7,14 +7,13 @@ class UpdateProfile extends Component {
     super(props)
     this.state = {
       multerImage: DefaultImg,
+      fav_movie: "",
+      fav_band: "",
+      song: "",
+      drink: "",
+      age: "",
       currentUserData: "",
-      currentAge: "",
-      currentSong: "",
-      currentDrink: "",
-      currentBand: "",
-      currentMovie: "",
       imageFormObj: "",
-      wouldNever: "",
       education: "",
       drinking: "",
       build: "",
@@ -40,7 +39,7 @@ class UpdateProfile extends Component {
 
     var user = this.props.user;
     var pass = this.props.password;
-
+    //fetch('http://localhost:5000/api/users/', {
     fetch('https://datingapi.herokuapp.com/api/users/', {
       method: "GET",
       mode: "cors",
@@ -58,14 +57,28 @@ class UpdateProfile extends Component {
         response.json().then((responseJson) => {
           //  resolve(responseJson)
           if (responseJson != null) {
+            console.log(responseJson)
             this.setState({
               currentUserData: responseJson.user[0],
-              currentAge: responseJson.user[0].age,
-              currentSong: responseJson.user[0].fav_song,
-              currentDrink: responseJson.user[0].fav_drink,
-              currentBand: responseJson.user[0].fav_band,
-              currentMovie: responseJson.user[0].fav_movie,
+              age: responseJson.user[0].age,
+              song: responseJson.user[0].fav_song,
+              drink: responseJson.user[0].fav_drink,
+              fav_band: responseJson.user[0].fav_band,
+              fav_movie: responseJson.user[0].fav_movie,
+              education: responseJson.user[0].education,
+              drinking: responseJson.user[0].drinking,
+              build: responseJson.user[0].build,
+              livingstatus: responseJson.user[0].living_status,
+              seeking: responseJson.user[0].looking_for,
+              idealvaca: responseJson.user[0].ideal_vaca,
+              favcheese: responseJson.user[0].fav_cheese,
+              timeofday: responseJson.user[0].fav_timeofday,
+              movgenre: responseJson.user[0].fav_mov_genre,
+              weather: responseJson.user[0].fav_weather,
+              cuisine: responseJson.user[0].fav_cuisine,
+              gender: responseJson.user[0].gender,
               multerImage: 'https://datingapi.herokuapp.com/' + responseJson.user["0"].Image.imageData
+             // multerImage: 'http://localhost:5000/' + responseJson.user["0"].Image.imageData
             })
           }
         })
@@ -108,6 +121,7 @@ class UpdateProfile extends Component {
   postImage = () => {
     var user = this.props.user;
     var pass = this.props.password;
+  //  fetch("http://localhost:5000/api/users/image", {
     fetch("https://datingapi.herokuapp.com/api/users/image", {
       method: "PUT",
       headers: {
@@ -124,6 +138,7 @@ class UpdateProfile extends Component {
     var pass = this.props.password;
 
     return new Promise((resolve, reject) => {
+     // fetch('http://localhost:5000/api/users', {
       fetch('https://datingapi.herokuapp.com/api/users', {
         method: "PUT",
         headers: {
@@ -131,22 +146,22 @@ class UpdateProfile extends Component {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "fav_movie": this.fav_movie.value,
-          "fav_band": this.fav_band.value,
-          "fav_song": this.fav_song.value,
+          "fav_movie": this.state.fav_movie,
+          "fav_band": this.state.fav_band,
+          "fav_song": this.state.song,
           "fav_vaca": this.state.idealvaca,
           "looking_for": this.state.seeking,
           "drinking": this.state.drinking,
           "education": this.state.education,
           "build": this.state.build,
           "living_status": this.state.livingstatus,
-          "age": this.age.value,
+          "age": this.state.age,
           "ideal_vaca": this.state.idealvaca,
           "fav_cheese": this.state.favcheese,
           "fav_timeofday": this.state.timeofday,
           "fav_mov_genre": this.state.movgenre,
           "fav_weather": this.state.weather,
-          "fav_drink": this.fav_drink.value,
+          "fav_drink": this.state.drink,
           "fav_cuisine": this.state.cuisine,
           "gender": this.state.gender,
           "imgId": this.props.id,
@@ -155,13 +170,15 @@ class UpdateProfile extends Component {
       })
         .then((response) => {
           if (response.status === 200) {
+            console.log(response)
             alert('Your profile has been updated');
             this.props.history.push("/");
           }
           //if update unsuccessful, alert why
           else {
             response.json().then((responseJson) => {
-              alert(responseJson.Error);
+              console.log(responseJson)
+              alert(responseJson["Error"])
               resolve(responseJson)
             })
           }
@@ -229,42 +246,46 @@ class UpdateProfile extends Component {
                 <div className="row">
                   <div>
                     <input
+                      value={this.state.age}
+                      onChange={this.handleChange}
                       type="text"
                       id="input1"
                       name="age"
-                      ref={(input) => this.age = input}
-                      placeholder={this.state.currentAge} />
+                      placeholder={this.state.age} />
                   </div>
                 </div>
                 <div className="row">
-                  <select name="gender" id="dropdownGender" className="gender" onChange={this.handleChange}>
-                    <option value="" selected disabled hidden>I am a... </option>
-                    <option value="Man">Man</option>
-                    <option value="Woman">Woman</option>
-                  </select>
-                  <select name="seeking" id="dropdownSeeking" className="seeking" onChange={this.handleChange}>
-                    <option value="" selected disabled hidden>I'm looking for a... </option>
-                    <option value="Man">Man</option>
-                    <option value="Woman">Woman</option>
-                    <option value="Doesn't Matter">I'm not choosy</option>
-                  </select>
-                </div>
+                <select id="dropdownGender" name="gender" className="gender" onChange={this.handleChange}>
+                  <option value="" selected disabled hidden>I am a... </option>
+                  <option value="Man">Man</option>
+                  <option value="Woman">Woman</option>
+                </select>
+
+              <select id="dropdownSeeking" name="seeking" className="seeking" onChange={this.handleChange}>
+                  <option value="" selected disabled hidden>I'm looking for a... </option>
+                  <option value="Man">Man</option>
+                  <option value="Woman">Woman</option>
+                  <option value="">I swing both ways</option>
+                </select>
+              </div>
 
                 <div className="row">
                   <div>
                     <input
+                      value={this.state.song}
+                      onChange={this.handleChange}
                       type="text"
                       id="input2"
-                      name="movie"
-                      ref={(input) => this.fav_song = input}
-                      placeholder={this.state.currentSong} />
+                      name="song"
+                      placeholder={this.state.song} />
                   </div>
                   <div>
                     <input type="text"
-                      name="song"
+                      value={this.state.drink}
+                      onChange={this.handleChange}
+                      name="drink"
                       id="input3"
-                      ref={(input) => this.fav_drink = input}
-                      placeholder={this.state.currentDrink} />
+                      placeholder={this.state.drink} />
                   </div>
                 </div>
                 <div className="row">
@@ -368,16 +389,18 @@ class UpdateProfile extends Component {
               <div className="row">
                 <div>
                   <input
+                    value={this.state.fav_band}
+                    onChange={this.handleChange}
                     type="text"
                     name="fav_band"
-                    ref={(input) => this.fav_band = input}
                     placeholder={this.state.currentBand} />
                 </div>
                 <div>
                   <input
+                    value={this.state.fav_movie}
+                    onChange={this.handleChange}
                     type="text"
                     name="fav_movie"
-                    ref={(input) => this.fav_movie = input}
                     placeholder={this.state.currentMovie} />
                 </div>
               </div>

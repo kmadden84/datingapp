@@ -63,8 +63,9 @@ class CreateAccount extends Component {
 postImage = () => {
   var user = this.props.user;
   var pass = this.props.password;
-
   fetch("https://datingapi.herokuapp.com/api/users/image", {
+
+  //fetch("http://localhost:5000/api/users/image", {
   method: "POST",
   headers: {
    'Authorization': 'Basic ' + btoa(user + ':' + pass),
@@ -83,8 +84,9 @@ postImage = () => {
       var pass = this.props.password;
 
     
-
       fetch("https://datingapi.herokuapp.com/api/users", {
+
+      //fetch("http://localhost:5000/api/users", {
         method: "POST",
         headers: {
          'Authorization': 'Basic ' + btoa(user + ':' + pass),

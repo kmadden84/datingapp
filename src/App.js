@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Home from './components/Home';
 import UserSignIn from './components/UserSignIn';
 import SearchPage from './components/SearchPage';
-import Search from './components/Search';
 import UserSignUp from './components/UserSignUp';
 import UpdateProfile from './components/UpdateProfile';
 import CreateAccount from './components/CreateAccount';
@@ -10,13 +9,12 @@ import MyProfile from './components/MyProfile';
 import UserSignOut from './components/UserSignOut';
 import UserDetails from './components/UserDetails';
 import NoResults from './components/NoResults';
-
-
-// import NoResults from './components/NoResults';
-// import Forbidden from './components/Forbidden';
-
-
+import Messages from './components/Messages';
+import MessageDetails from './components/MessageDetails';
+import Forbidden from './components/Forbidden';
+import Error from './components/Error';
 import Header from './components/Header';
+// import NoResults from './components/NoResults';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { createBrowserHistory } from 'history'
@@ -33,11 +31,44 @@ class App extends Component {
       firstName: (Cookies.get("firstName")) ? Cookies.get("firstName") : "",
       lastName: (Cookies.get("lastName")) ? Cookies.get("lastName") : "",
       detailsLoader: "",
+      messages: "",
       searchParams: {}
     }
     this.signIn = this.signIn.bind(this);
     this.handleStateChange = this.handleStateChange.bind(this);
     // this.clearState = this.clearState.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.state.username !== "") {
+      return new Promise((resolve, reject) => {
+        //fetch("http://localhost:5000/api/creds", {
+      fetch("https://datingapi.herokuapp.com/api/creds", {
+          method: "GET",
+          mode: 'cors',
+          headers: new Headers({
+            'Authorization': 'Basic ' + btoa(this.state.username + ':' + this.state.password)
+          }),
+        })
+          .then((response) => {
+            this.setState({
+              loader: false,
+            });
+            response.json().then((responseJson) => {
+                this.setState({
+                  messages: responseJson["Messages"]
+                });
+              if (response.status === 401) {
+                alert(responseJson.Error)
+              }
+            })
+          }).catch((error) => {
+            reject(error);
+            //redirect to error page
+            this.props.history.push("/error");
+          })
+      })
+    }
   }
 
   handleStateChange = ({ ...data }) => {
@@ -54,6 +85,7 @@ class App extends Component {
       loader: true,
     });
     return new Promise((resolve, reject) => {
+      //fetch("http://localhost:5000/api/creds", {
       fetch("https://datingapi.herokuapp.com/api/creds", {
         method: "GET",
         mode: 'cors',
@@ -79,16 +111,16 @@ class App extends Component {
                 firstName: responseJson["First Name"],
                 lastName: responseJson["Last Name"],
                 username: user,
-                password: pass
+                password: pass,
+                messages: responseJson["Messages"]
               });
-
-              console.log(this.state)
-              console.log(this.state.lastName)
+              console.log(this.state.messages)
+              // console.log(this.state)
+              // console.log(this.state.lastName)
             }
             if (response.status === 401) {
               alert(responseJson.Error)
             }
-
             //this.props.history.push("/search");
             // if (this.props.history.location.pathname !== "/signin") {
             //   history.goBack()
@@ -139,16 +171,13 @@ class App extends Component {
           <PrivateRoute path={`${this.props.match.path}create-account`} component={CreateAccount} />
           <PrivateRoute exact path={`${this.props.match.path}my-profile`} component={MyProfile} />
           <PrivateRoute exact path={`${this.props.match.path}update-profile`} component={UpdateProfile} />
+          <PrivateRoute exact path={`${this.props.match.path}messages`} component={Messages} />
+          <PrivateRoute exact path={`${this.props.match.path}messages/:id`} component={MessageDetails} />
           <Route path={`${this.props.match.path}signout`} exact={true} render={(props) => <UserSignOut signout={this.clearState} {...props} />} />
           <Route exact path={`${this.props.match.path}users/:id`} render={(props) => <UserDetails password={this.state.password} user={this.state.username} {...props} />} />
           <Route path='*' exact={true} component={NoResults} />
-
-          {/* 
-          <Route exact path={`${this.props.match.path}search`} render={(props) => <Search submit={this.handleStateChange} currentState={this.state} userdata={this.signIn} {...props} />} />
-          <Route exact path="/" render={(props) => <Home {...props} />} />
           <Route exact path='/forbidden' exact={true} component={Forbidden} />
           <Route path='/error' exact={true} component={Error} />
-            */}
         </Switch>
       </div>
     );

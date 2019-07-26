@@ -42,6 +42,51 @@ $smallmobile: 600px;
     @content;
   }
 }
+
+
+.styles_modal__gNwvD {
+  max-width: 800px;
+  position: relative;
+  padding: 2.2rem;
+  background: #ffffff;
+  background-clip: padding-box;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+  width: 500px;
+  height: 267px;
+
+  button.button {
+    background: #038;
+    padding: 10px;
+    border: 0;
+    color: #fff;
+}
+
+input, textarea {
+  width: 100%;
+  margin: 0;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+.row select:nth-child(2), .row div:nth-child(2) {
+  margin-left: 0
+}
+textarea {
+height: 150px;
+}
+ div {
+  margin: 0;
+  padding: 0;
+  margin-left: 0;
+}
+form {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+}
+
+
 .grid-33.centered.signin {
 
 .row div {
@@ -53,10 +98,56 @@ $smallmobile: 600px;
 }
 }
 
+.msgBlock {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+  margin-top: 10px;
+
+ p {
+  margin-bottom: 7px;
+}
+}
+
+h4.msg--label {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid;
+  border-collapse: collapse;
+  margin-bottom: 5px;
+}
+
 .formSearch h1 {
   text-align:center;
   font-family: 'milkshake'
 }
+i.fas.fa-envelope {
+  font-size: 25px;
+  position: relative;
+  /* right: 20px; */
+  top: 5px;
+}
+sup.msgNumber {
+  padding: 0;
+  border-radius: 50%;
+  background: red;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  position: relative;
+  left: -2px;
+  span {
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    font-size: 11px;
+}
+}
+a.msgCount {
+  text-decoration: none;
+}
+
 
 form.search-form {
   max-width: 1280px;
@@ -169,7 +260,7 @@ width:25%;
   background: #038;
 
 
- a:nth-child(2), a:nth-child(3) {
+  a:nth-child(2), a:nth-child(3), a:nth-child(4) {
     margin-left: 15PX;
  }
 
@@ -206,7 +297,22 @@ nav a {
 }
 }
 
-
+button.msgButton {
+  display: block;
+  clear: both;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px;
+  background: #038;
+  color: #fff;
+  border: 0;
+  font-family: 'milkshake';
+  font-size: 30px;
+}
+button.msgButton:hover {
+  cursor: pointer;
+}
 .row select:nth-child(2), .row div:nth-child(2) {
   margin-left: 10px;
 }
