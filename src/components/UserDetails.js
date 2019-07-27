@@ -81,7 +81,7 @@ class UserDetails extends Component {
     return new Promise((resolve, reject) => {
       var target = this.props.match.params;
       target = target.id;
-      fetch('https://datingapi.herokuapp.com/' + target + '', {
+      fetch('https://datingapi.herokuapp.com/api/users/' + target + '', {
         //fetch('http://localhost:5000/api/users/' + target + '', {
         method: "GET",
         mode: "cors",
