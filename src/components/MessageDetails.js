@@ -22,7 +22,7 @@ class UserDetails extends Component {
       this.setState({
         currentCourse: target
       });
-      fetch('km-dating-app.herokuapp.com/api/creds/messages/' + target + '', {
+      fetch('https://km-dating-app.herokuapp.com/api/creds/messages/' + target + '', {
       //fetch('http://localhost:5000/api/creds/messages/' + target + '', {
         method: "GET",
         mode: "cors",
