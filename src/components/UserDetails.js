@@ -37,7 +37,7 @@ class UserDetails extends Component {
     return new Promise((resolve, reject) => {
       var user = this.props.user;
       var pass = this.props.password;
-      fetch('https://km-dating-app.herokuapp.com/api/users/messages', {
+      fetch('https://datingapi.herokuapp.com/api/users/messages', {
         //fetch('http://localhost:5000/api/users/messages', {
         method: "POST",
         mode: "cors",
