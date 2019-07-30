@@ -20,8 +20,8 @@ console.log(userData[6].length)
           <nav>
           {
               (this.props.currentState.username !== "")
-        <NavLink to='/messages' className="msgCount"> <sup className="msgNumber"><span>{userData[6].length}</span></sup><i class="fas fa-envelope"></i></NavLink>
-        :""
+        ? <NavLink to='/messages' className="msgCount"> <sup className="msgNumber"><span>{userData[6].length}</span></sup><i class="fas fa-envelope"></i></NavLink>
+        : ""
             }
 
           {
